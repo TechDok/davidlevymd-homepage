@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Africa Geography Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="data/countries.js"></script>
+    <script defer src="data/geometry.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="quiz-panel" aria-labelledby="app-title">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Africa Geography</p>
+            <h1 id="app-title">Country Mastery Quiz</h1>
+          </div>
+          <button class="ghost-button" id="resetButton" type="button" title="Restart">
+            <span aria-hidden="true">↻</span>
+          </button>
+        </header>
+
+        <div class="mode-tabs" role="tablist" aria-label="Learning mode">
+          <button class="mode-tab active" id="quizModeButton" type="button" aria-selected="true">Quiz</button>
+          <button class="mode-tab" id="teachModeButton" type="button" aria-selected="false">Teach</button>
+        </div>
+
+        <section class="quiz-setup" id="quizSetup" aria-label="Quiz setup">
+          <label for="questionCount">Questions</label>
+          <input id="questionCount" type="number" min="5" max="270" step="5" value="30">
+          <button class="secondary-button" id="startQuizButton" type="button">Start</button>
+        </section>
+
+        <div class="meter" aria-label="Quiz progress">
+          <div class="meter-bar" id="progressBar"></div>
+        </div>
+
+        <div class="stats-grid" aria-label="Quiz stats">
+          <div>
+            <span class="stat-label">Question</span>
+            <strong id="questionStat">1 / 270</strong>
+          </div>
+          <div>
+            <span class="stat-label">Seen</span>
+            <strong id="countryStat">0 / 54</strong>
+          </div>
+          <div>
+            <span class="stat-label">Score</span>
+            <strong id="scoreStat">0</strong>
+          </div>
+        </div>
+
+        <section class="question-block" aria-live="polite">
+          <div class="pill" id="quizType">Location</div>
+          <h2 id="questionText"></h2>
+          <p id="subText" class="subtext"></p>
+        </section>
+
+        <div class="choices" id="choices" aria-label="Answer choices"></div>
+
+        <section class="teach-panel hidden" id="teachPanel" aria-label="Country teaching mode">
+          <label for="countrySelect">Country</label>
+          <select id="countrySelect"></select>
+          <article class="country-card" id="countryCard"></article>
+        </section>
+
+        <section class="feedback hidden" id="feedback" aria-live="polite">
+          <div class="feedback-head">
+            <span id="feedbackBadge"></span>
+            <strong id="feedbackTitle"></strong>
+          </div>
+          <ul id="factsList"></ul>
+        </section>
+
+        <div class="actions">
+          <button class="primary-button" id="nextButton" type="button" disabled>Next</button>
+        </div>
+      </section>
+
+      <section class="map-panel" aria-label="Clickable SVG map of Africa">
+        <div class="map-toolbar" aria-label="Map controls">
+          <button class="ghost-button" id="zoomInButton" type="button" title="Zoom in">+</button>
+          <button class="ghost-button" id="zoomOutButton" type="button" title="Zoom out">−</button>
+          <button class="ghost-button" id="resetMapButton" type="button" title="Reset map">⌂</button>
+        </div>
+        <svg id="africaMap" class="africa-map" viewBox="0 0 860 780" role="img" aria-labelledby="mapTitle mapDesc">
+          <title id="mapTitle">Africa map</title>
+          <desc id="mapDesc">Clickable country shapes used in the quiz.</desc>
+          <g id="mapLayer"></g>
+          <g id="markerLayer"></g>
+        </svg>
+      </section>
+    </main>
+  </body>
+</html>
